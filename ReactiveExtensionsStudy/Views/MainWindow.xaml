@@ -7,13 +7,29 @@
         xmlns:viewModels="clr-namespace:ReactiveExtensionsStudy.ViewModels"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance viewModels:MainWindowViewModel}"
-        Title="MainWindow">
+        Title="{Binding Title}">
 
     <Window.DataContext>
         <viewModels:MainWindowViewModel />
     </Window.DataContext>
 
-    <Grid>
+    <StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
 
-    </Grid>
+            <Button Grid.Column="0"
+                    Command="{Binding ShowGreetingCommand}"
+                    Content="Greeting" />
+
+            <TextBox Grid.Column="1"
+                     HorizontalAlignment="Stretch"
+                     Text="{Binding GreetingTo}" />
+        </Grid>
+
+        <Label Content="{Binding Greeting}" />
+    </StackPanel>
+
 </Window>
