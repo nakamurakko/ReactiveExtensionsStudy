@@ -7,29 +7,63 @@
         xmlns:viewModels="clr-namespace:ReactiveExtensionsStudy.ViewModels"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance viewModels:MainWindowViewModel}"
+        d:Height="600"
+        d:Width="800"
         Title="{Binding Title}">
 
     <Window.DataContext>
         <viewModels:MainWindowViewModel />
     </Window.DataContext>
 
-    <StackPanel>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
-            <Button Grid.Column="0"
-                    Command="{Binding ShowGreetingCommand}"
-                    Content="Greeting" />
+        <StackPanel Grid.Row="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-            <TextBox Grid.Column="1"
-                     HorizontalAlignment="Stretch"
-                     Text="{Binding GreetingTo}" />
-        </Grid>
+                <Button Grid.Column="0"
+                        Command="{Binding ShowGreetingCommand}"
+                        Content="Greeting" />
 
-        <Label Content="{Binding Greeting}" />
-    </StackPanel>
+                <TextBox Grid.Column="1"
+                         HorizontalAlignment="Stretch"
+                         Text="{Binding GreetingTo}" />
+            </Grid>
+
+            <Label Content="{Binding Greeting}" />
+        </StackPanel>
+
+        <TabControl Grid.Row="1">
+            <TabItem  Header="{Binding Title}">
+                <TabItem.DataContext>
+                    <viewModels:SelectManySamplePageViewModel />
+                </TabItem.DataContext>
+
+                <StackPanel>
+                    <Button Command="{Binding ExecuteCommand}"
+                            Content="Execute" />
+
+                    <ListView BorderBrush="Transparent"
+                              ItemsSource="{Binding Users}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <Label Content="{Binding}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
 
 </Window>
