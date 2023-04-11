@@ -19,7 +19,7 @@ namespace ReactiveExtensionsStudy.ViewModels
         private ObservableCollection<string> _users = new ObservableCollection<string>();
 
         [RelayCommand]
-        public void Execute()
+        public void ShowUsers()
         {
             Users.Clear();
 

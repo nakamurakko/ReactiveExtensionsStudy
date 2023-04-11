@@ -47,7 +47,7 @@
                 </TabItem.DataContext>
 
                 <StackPanel>
-                    <Button Command="{Binding ExecuteCommand}"
+                    <Button Command="{Binding ShowUsersCommand}"
                             Content="Execute" />
 
                     <ListView BorderBrush="Transparent"
