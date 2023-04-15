@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ReactiveExtensionsStudy.ViewModels
 {
-    internal partial class SelectManySamplePageViewModel : ObservableObject
+    internal partial class SelectManySampleViewModel : ObservableObject
     {
         [ObservableProperty]
         private string _title = "SelectMany";
