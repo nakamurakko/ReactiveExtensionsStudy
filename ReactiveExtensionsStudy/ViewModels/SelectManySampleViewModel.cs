@@ -23,7 +23,7 @@ namespace ReactiveExtensionsStudy.ViewModels
         {
             Users.Clear();
 
-            Observable.Return(new List<string>() { "山田太郎", "田中次郎", "中島三郎" })
+            Observable.Start(() => new List<string>() { "山田太郎", "田中次郎", "中島三郎" })
                 .SelectMany(x => x)
                 .Select(x => x + "さん")
                 .Subscribe(x =>

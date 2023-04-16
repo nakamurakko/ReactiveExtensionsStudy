@@ -23,7 +23,7 @@ namespace ReactiveExtensionsStudy.ViewModels
         [RelayCommand]
         public void ShowGreeting()
         {
-            Observable.Return($@"Hello {GreetingTo}.")
+            Observable.Start(() => $@"Hello {GreetingTo}.")
                 .Delay(TimeSpan.FromSeconds(3))
                 .Subscribe(x =>
                 {
