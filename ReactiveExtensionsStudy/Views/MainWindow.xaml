@@ -41,6 +41,58 @@
         </StackPanel>
 
         <TabControl Grid.Row="1">
+            <TabItem Header="{Binding Title}">
+                <TabItem.DataContext>
+                    <viewModels:MergeSampleViewModel />
+                </TabItem.DataContext>
+
+                <StackPanel  Orientation="Horizontal">
+                    <StackPanel>
+                        <Label Content="User 1" />
+                        <ListView BorderBrush="Transparent"
+                                  ItemsSource="{Binding Users1}">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <Label Content="{Binding}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                    <StackPanel>
+                        <Label Content="User 2" />
+                        <ListView BorderBrush="Transparent"
+                                  ItemsSource="{Binding Users2}">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <Label Content="{Binding}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                    <StackPanel>
+                        <Button Command="{Binding MergeUsersCommand}"
+                                Content="Merge Users" />
+
+                        <ListView BorderBrush="Transparent"
+                                  ItemsSource="{Binding AllUsers}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <Label Content="{Binding}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+
             <TabItem  Header="{Binding Title}">
                 <TabItem.DataContext>
                     <viewModels:SelectManySampleViewModel />
