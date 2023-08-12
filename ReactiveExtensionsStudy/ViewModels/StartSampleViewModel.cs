@@ -1,51 +1,46 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reactive.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ReactiveExtensionsStudy.ViewModels
+namespace ReactiveExtensionsStudy.ViewModels;
+
+internal partial class StartSampleViewModel : ObservableObject
 {
-    internal partial class StartSampleViewModel : ObservableObject
+    [ObservableProperty]
+    public string _title = "StartSample";
+
+    [ObservableProperty]
+    public string _message = "";
+
+    [RelayCommand]
+    public void HelloWorld()
     {
-        [ObservableProperty]
-        public string _title = "StartSample";
+        this.Message = "";
 
-        [ObservableProperty]
-        public string _message = "";
-
-        [RelayCommand]
-        public void HelloWorld()
+        Observable.Start(() =>
         {
-            Message = "";
-
-            Observable.Start(() =>
+            return "Hello world.";
+        })
+            .Subscribe(x =>
             {
-                return "Hello world.";
-            })
-                .Subscribe(x =>
-                {
-                    Message = x;
-                });
-        }
+                this.Message = x;
+            });
+    }
 
-        [RelayCommand]
-        public void HelloWorldWithDelay()
+    [RelayCommand]
+    public void HelloWorldWithDelay()
+    {
+        this.Message = "";
+
+        Observable.Start(() =>
         {
-            Message = "";
-
-            Observable.Start(() =>
+            return "Hello world with Delay.";
+        })
+            .Delay(TimeSpan.FromSeconds(3))
+            .Subscribe(x =>
             {
-                return "Hello world with Delay.";
-            })
-                .Delay(TimeSpan.FromSeconds(3))
-                .Subscribe(x =>
-                {
-                    Message = x;
-                });
-        }
+                this.Message = x;
+            });
     }
 }

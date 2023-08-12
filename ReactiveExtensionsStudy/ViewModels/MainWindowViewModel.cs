@@ -1,41 +1,36 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reactive.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ReactiveExtensionsStudy.ViewModels
+namespace ReactiveExtensionsStudy.ViewModels;
+
+internal partial class MainWindowViewModel : ObservableObject
 {
-    internal partial class MainWindowViewModel : ObservableObject
+    [ObservableProperty]
+    private string _title = "ReactiveExtensionsStudy";
+
+    [ObservableProperty]
+    public string _greeting = "";
+
+    [ObservableProperty]
+    public string _greetingTo = "Everyone";
+
+    [RelayCommand]
+    public void ShowGreeting()
     {
-        [ObservableProperty]
-        private string _title = "ReactiveExtensionsStudy";
+        Observable.Start(() => $@"Hello {this.GreetingTo}.")
+            .Delay(TimeSpan.FromSeconds(3))
+            .Subscribe(x =>
+            {
+                this.Greeting = "";
 
-        [ObservableProperty]
-        public string _greeting = "";
-
-        [ObservableProperty]
-        public string _greetingTo = "Everyone";
-
-        [RelayCommand]
-        public void ShowGreeting()
-        {
-            Observable.Start(() => $@"Hello {GreetingTo}.")
-                .Delay(TimeSpan.FromSeconds(3))
-                .Subscribe(x =>
+                if (!string.IsNullOrEmpty(x))
                 {
-                    Greeting = "";
+                    this.Greeting = x;
+                }
+            });
 
-                    if (!string.IsNullOrEmpty(x))
-                    {
-                        Greeting = x;
-                    }
-                });
-
-            Greeting = "Greetings!";
-        }
+        this.Greeting = "Greetings!";
     }
 }
