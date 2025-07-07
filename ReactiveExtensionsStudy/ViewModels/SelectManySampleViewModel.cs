@@ -14,7 +14,7 @@ internal partial class SelectManySampleViewModel : ObservableObject
     private string _title = "SelectMany";
 
     [ObservableProperty]
-    private ObservableCollection<string> _users = new ObservableCollection<string>();
+    private ObservableCollection<string> _users = new();
 
     [RelayCommand]
     public void ShowUsers()

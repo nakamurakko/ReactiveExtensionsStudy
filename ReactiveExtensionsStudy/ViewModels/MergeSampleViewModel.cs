@@ -13,13 +13,13 @@ internal partial class MergeSampleViewModel : ObservableObject
     private string _title = "Merge Sample";
 
     [ObservableProperty]
-    private ObservableCollection<string> _users1 = new ObservableCollection<string>() { "山田太郎", "田中次郎", "中島三郎" };
+    private ObservableCollection<string> _users1 = new() { "山田太郎", "田中次郎", "中島三郎" };
 
     [ObservableProperty]
-    private ObservableCollection<string> _users2 = new ObservableCollection<string>() { "高橋四郎", "戸田五郎", "市川六郎" };
+    private ObservableCollection<string> _users2 = new() { "高橋四郎", "戸田五郎", "市川六郎" };
 
     [ObservableProperty]
-    private ObservableCollection<string> _allUsers = new ObservableCollection<string>();
+    private ObservableCollection<string> _allUsers = new();
 
     [RelayCommand]
     private void MergeUsers()
