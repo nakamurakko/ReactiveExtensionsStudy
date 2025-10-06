@@ -9,6 +9,7 @@ namespace ReactiveExtensionsStudy.ViewModels;
 
 internal partial class MergeSampleViewModel : ObservableObject
 {
+
     [ObservableProperty]
     private string _title = "Merge Sample";
 
@@ -34,4 +35,5 @@ internal partial class MergeSampleViewModel : ObservableObject
                 this.AllUsers.Add(x);
             });
     }
+
 }

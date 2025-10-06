@@ -7,6 +7,7 @@ namespace ReactiveExtensionsStudy.ViewModels;
 
 internal partial class StartSampleViewModel : ObservableObject
 {
+
     [ObservableProperty]
     public string _title = "StartSample";
 
@@ -43,4 +44,5 @@ internal partial class StartSampleViewModel : ObservableObject
                 this.Message = x;
             });
     }
+
 }

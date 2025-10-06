@@ -10,6 +10,7 @@ namespace ReactiveExtensionsStudy.ViewModels;
 
 internal partial class SelectManySampleViewModel : ObservableObject
 {
+
     [ObservableProperty]
     private string _title = "SelectMany";
 
@@ -29,4 +30,5 @@ internal partial class SelectManySampleViewModel : ObservableObject
                 this.Users.Add(x);
             });
     }
+
 }
